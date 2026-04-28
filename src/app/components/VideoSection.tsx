@@ -6,6 +6,7 @@ import { Button } from './ui/button';
 import { SectionContainer } from './ui/section-container';
 import { GradientText } from './ui/gradient-text';
 import { useLanguage } from '../contexts/LanguageContext';
+import videoFile from '../assets/images/GIEA Mme aurore 1.mp4';
 
 export default function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -142,14 +143,16 @@ export default function VideoSection() {
             ) : (
               /* Video Player - Lazy loaded seulement quand nécessaire */
               shouldLoadVideo && (
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&modestbranding=1"
-                  title={t('video.title')}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                ></iframe>
+                <video
+                  className="w-full h-full object-cover"
+                  controls
+                  autoPlay
+                  controlsList="nodownload"
+                  playsInline
+                >
+                  <source src={videoFile} type="video/mp4" />
+                  {t('video.noSupport')}
+                </video>
               )
             )}
           </div>
