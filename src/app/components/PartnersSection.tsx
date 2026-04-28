@@ -2,17 +2,21 @@ import { motion } from 'motion/react';
 import { SectionContainer } from './ui/section-container';
 import { GradientText } from './ui/gradient-text';
 import { useLanguage } from '../contexts/LanguageContext';
+import globalImage from '../assets/images/global.jpg';
+import gieaImage from '../assets/images/giea.png';
+import minjecImage from '../assets/images/minjec.png';
+import minasImage from '../assets/images/minas.png';
+import fneImage from '../assets/images/image.png';
 
-// Logos partenaires (à remplacer par vos vrais logos)
 const partners = [
-  { name: 'Partner 1', logo: 'https://via.placeholder.com/200x80/059669/ffffff?text=Partner+1' },
-  { name: 'Partner 2', logo: 'https://via.placeholder.com/200x80/2563eb/ffffff?text=Partner+2' },
-  { name: 'Partner 3', logo: 'https://via.placeholder.com/200x80/059669/ffffff?text=Partner+3' },
-  { name: 'Partner 4', logo: 'https://via.placeholder.com/200x80/2563eb/ffffff?text=Partner+4' },
-  { name: 'Partner 5', logo: 'https://via.placeholder.com/200x80/059669/ffffff?text=Partner+5' },
-  { name: 'Partner 6', logo: 'https://via.placeholder.com/200x80/2563eb/ffffff?text=Partner+6' },
-  { name: 'Partner 7', logo: 'https://via.placeholder.com/200x80/059669/ffffff?text=Partner+7' },
-  { name: 'Partner 8', logo: 'https://via.placeholder.com/200x80/2563eb/ffffff?text=Partner+8' },
+  { name: 'Partner 1', logo: globalImage },
+  { name: 'Partner 2', logo: gieaImage },
+  { name: 'Partner 3', logo: minjecImage },
+  { name: 'Partner 4', logo: minasImage },
+  { name: 'Partner 5', logo: fneImage },
+  //{ name: 'Partner 6', logo: 'https://via.placeholder.com/200x80/2563eb/ffffff?text=Partner+6' },
+  //{ name: 'Partner 7', logo: 'https://via.placeholder.com/200x80/059669/ffffff?text=Partner+7' },
+  //{ name: 'Partner 8', logo: 'https://via.placeholder.com/200x80/2563eb/ffffff?text=Partner+8' },
 ];
 
 export default function PartnersSection() {
