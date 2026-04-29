@@ -28,7 +28,7 @@ const translations: Translations = {
   },
   'hero.cta.porteur': { fr: 'Je suis porteur de projet', en: 'I\'m a project owner' },
   'hero.cta.investisseur': { fr: 'Je suis investisseur', en: 'I\'m an investor' },
-  'hero.date': { fr: '10 Avril 2026', en: 'April 10, 2026' },
+  'hero.date': { fr: 'Avril 2026', en: 'April, 2026' },
   'hero.location': { fr: 'Yaoundé, Cameroun', en: 'Yaoundé, Cameroon' },
   'hero.free': { fr: 'Inscription gratuite', en: 'Free registration' },
 
@@ -416,7 +416,7 @@ const translations: Translations = {
   },
   'footer.contact': { fr: 'Contact', en: 'Contact' },
   'footer.event': { fr: 'Événement', en: 'Event' },
-  'footer.date': { fr: 'Date: 10 Avril 2026', en: 'Date: April 10, 2026' },
+  'footer.date': { fr: 'Date: Avril 2026', en: 'Date: April, 2026' },
   'footer.location': { fr: 'Lieu: Yaoundé, Cameroun', en: 'Location: Yaoundé, Cameroon' },
   'footer.free': { fr: 'Inscription: Gratuite', en: 'Registration: Free' },
   'footer.rights': { fr: 'Tous droits réservés', en: 'All rights reserved' },
