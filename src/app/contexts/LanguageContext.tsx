@@ -27,6 +27,7 @@ const translations: Translations = {
     en: 'The event connecting African ambition to capital'
   },
   'hero.cta.porteur': { fr: 'Je suis porteur de projet', en: 'I\'m a project owner' },
+  'hero.cta.entrepreneur': { fr: 'Je suis entrepreneur / TPE / PME', en: 'I\'m an entrepreneur / SME' },
   'hero.cta.investisseur': { fr: 'Je suis investisseur', en: 'I\'m an investor' },
   'hero.date': { fr: '10 Avril 2026', en: 'April 10, 2026' },
   'hero.location': { fr: 'Yaoundé, Cameroun', en: 'Yaoundé, Cameroon' },
@@ -318,6 +319,11 @@ const translations: Translations = {
     fr: 'Je souhaite présenter mon projet et trouver des investisseurs',
     en: 'I want to present my project and find investors'
   },
+  'inscription.step1.entrepreneur.title': { fr: 'Entrepreneur / TPE / PME', en: 'Entrepreneur / SME' },
+  'inscription.step1.entrepreneur.desc': {
+    fr: 'Je développe mon entreprise et cherche des opportunités de croissance',
+    en: 'I\'m developing my business and looking for growth opportunities'
+  },
   'inscription.step1.investisseur.title': { fr: 'Investisseur', en: 'Investor' },
   'inscription.step1.investisseur.desc': {
     fr: 'Je recherche des opportunités d\'investissement',
@@ -366,6 +372,7 @@ const translations: Translations = {
   'inscription.step4.title': { fr: 'Confirmez votre inscription', en: 'Confirm your registration' },
   'inscription.step4.profile': { fr: 'Profil', en: 'Profile' },
   'inscription.step4.profile.porteur': { fr: 'Porteur de projet', en: 'Project owner' },
+  'inscription.step4.profile.entrepreneur': { fr: 'Entrepreneur / TPE / PME', en: 'Entrepreneur / SME' },
   'inscription.step4.profile.investisseur': { fr: 'Investisseur', en: 'Investor' },
   'inscription.step4.fullName': { fr: 'Nom complet', en: 'Full name' },
   'inscription.step4.email': { fr: 'Email', en: 'Email' },
@@ -376,6 +383,7 @@ const translations: Translations = {
   'inscription.step4.organization': { fr: 'Organisation', en: 'Organization' },
   'inscription.button.back': { fr: 'Retour', en: 'Back' },
   'inscription.button.next': { fr: 'Suivant', en: 'Next' },
+  'inscription.button.submitting': { fr: 'Inscription en cours...', en: 'Registering...' },
   'inscription.button.confirm': {
     fr: 'Confirmer et générer mon ticket',
     en: 'Confirm and generate my ticket'

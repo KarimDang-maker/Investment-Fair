@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, User, Mail, Phone, MapPin, Briefcase, CheckCircle } from 'lucide-react';
+import { ArrowRight, ArrowLeft, User, Mail, Phone, MapPin, Briefcase, CheckCircle, AlertCircle, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { useLanguage } from '../contexts/LanguageContext';
 
-type ProfileType = 'porteur' | 'investisseur' | '';
+type ProfileType = 'porteur' | 'investisseur' | 'entrepreneur' | '';
 
 interface FormData {
   profileType: ProfileType;
@@ -31,6 +31,8 @@ export default function InscriptionPage() {
   const typeFromUrl = searchParams.get('type') as ProfileType;
 
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
   const [formData, setFormData] = useState<FormData>({
     profileType: typeFromUrl || '',
     firstName: '',
@@ -48,7 +50,7 @@ export default function InscriptionPage() {
   });
 
   useEffect(() => {
-    if (typeFromUrl && (typeFromUrl === 'porteur' || typeFromUrl === 'investisseur')) {
+    if (typeFromUrl && (typeFromUrl === 'porteur' || typeFromUrl === 'investisseur' || typeFromUrl === 'entrepreneur')) {
       setFormData(prev => ({ ...prev, profileType: typeFromUrl }));
       setCurrentStep(2);
     }
@@ -58,20 +60,112 @@ export default function InscriptionPage() {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = () => {
-    const ticketId = `SIP${Date.now()}${Math.floor(Math.random() * 1000)}`;
-    const ticketData = {
-      ...formData,
-      ticketId,
-      timestamp: new Date().toISOString()
-    };
+  // envoi du mail par mailto
+  const sendEngineerEmails = async (formData: FormData) => {
+    const adminEmail = 'contact@gieaorg.com';
+    
+    // contenu du mail pour l'admin
+    const adminSubject = 'Nouvelle inscription entrepreneur - Investment Fair';
+    const adminBody = `Nouvelle inscription entrepreneur reçue:
 
-    localStorage.setItem(`ticket_${ticketId}`, JSON.stringify(ticketData));
-    navigate(`/ticket/${ticketId}`);
+Nom: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+Ville: ${formData.city}, ${formData.country}
+Nom du projet: ${formData.projectName}
+Secteur d'activité: ${formData.sector}
+
+Date d'inscription: ${new Date().toLocaleDateString('fr-FR')} à ${new Date().toLocaleTimeString('fr-FR')}`;
+
+    // format du mail de confirmation pour le client 
+    const userSubject = 'Confirmation d\'inscription - Investment Fair';
+    const userBody = `Bonjour ${formData.firstName},
+
+Merci pour votre inscription au salon de l'investisseur !
+
+Nous avons bien reçu votre inscription avec les informations suivantes:
+- Nom: ${formData.firstName} ${formData.lastName}
+- Projet: ${formData.projectName}
+- Secteur: ${formData.sector}
+- Email: ${formData.email}
+
+Nous traitons vos données et nous vous recontacterons bientôt avec plus d'informations sur l'événement.
+
+Cordialement,
+L'équipe du salon de l'investisseur`;
+
+    try {
+      // ouverture admin inbox
+      setTimeout(() => {
+        window.open(
+          `mailto:${adminEmail}?subject=${encodeURIComponent(adminSubject)}&body=${encodeURIComponent(adminBody)}`,
+          '_blank'
+        );
+      }, 100);
+
+      // ouverture client inbox
+      setTimeout(() => {
+        window.open(
+          `mailto:${formData.email}?subject=${encodeURIComponent(userSubject)}&body=${encodeURIComponent(userBody)}`,
+          '_blank'
+        );
+      }, 500);
+
+      return true;
+    } catch (error) {
+      console.error('Error opening email client:', error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (formData.profileType === 'entrepreneur') {
+      
+      setIsSubmitting(true);
+      
+      try {
+        const emailsSent = await sendEngineerEmails(formData);
+        
+        if (emailsSent) {
+          setSubmitMessage('success');
+          setTimeout(() => navigate('/'), 2000);
+        } else {
+          setSubmitMessage('error');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        setSubmitMessage('error');
+      } finally {
+        setIsSubmitting(false);
+      }
+    } else {
+     
+      const ticketId = `SIP${Date.now()}${Math.floor(Math.random() * 1000)}`;
+      const ticketData = {
+        ...formData,
+        ticketId,
+        timestamp: new Date().toISOString()
+      };
+
+      localStorage.setItem(`ticket_${ticketId}`, JSON.stringify(ticketData));
+      navigate(`/ticket/${ticketId}`);
+    }
   };
 
   const canProceedStep2 = formData.firstName && formData.lastName && formData.email && formData.phone;
-  const canProceedStep3 = formData.city && formData.country;
+  const canProceedStep3 = () => {
+    if (!formData.city || !formData.country) return false;
+    
+    if (formData.profileType === 'entrepreneur') {
+      return !!(formData.projectName && formData.sector);
+    }
+    
+    if (formData.profileType === 'porteur') {
+      return !!(formData.projectName && formData.sector);
+    }
+    
+    return true;
+  };
 
   const steps = [
     { number: 1, labelKey: 'inscription.steps.profile' },
@@ -135,7 +229,7 @@ export default function InscriptionPage() {
             <div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('inscription.step1.title')}</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <button
                   onClick={() => {
                     updateFormData('profileType', 'porteur');
@@ -153,6 +247,26 @@ export default function InscriptionPage() {
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{t('inscription.step1.porteur.title')}</h3>
                   <p className="text-gray-600 text-sm">
                     {t('inscription.step1.porteur.desc')}
+                  </p>
+                </button>
+
+                <button
+                  onClick={() => {
+                    updateFormData('profileType', 'entrepreneur');
+                    setCurrentStep(2);
+                  }}
+                  className={`p-8 border-2 rounded-xl transition-all hover:shadow-lg ${
+                    formData.profileType === 'entrepreneur'
+                      ? 'border-yellow-600 bg-yellow-50'
+                      : 'border-gray-200 hover:border-yellow-300'
+                  }`}
+                >
+                  <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Sparkles className="h-8 w-8 text-yellow-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{t('inscription.step1.entrepreneur.title')}</h3>
+                  <p className="text-gray-600 text-sm">
+                    {t('inscription.step1.entrepreneur.desc')}
                   </p>
                 </button>
 
@@ -323,6 +437,40 @@ export default function InscriptionPage() {
                   </>
                 )}
 
+                {formData.profileType === 'entrepreneur' && (
+                  <>
+                    <div className="md:col-span-2">
+                      <Label htmlFor="projectName">{t('inscription.step3.projectName')}</Label>
+                      <Input
+                        id="projectName"
+                        placeholder={t('inscription.step3.projectName.placeholder')}
+                        value={formData.projectName}
+                        onChange={(e) => updateFormData('projectName', e.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <Label htmlFor="sector">{t('inscription.step3.sector')}</Label>
+                      <select
+                        id="sector"
+                        value={formData.sector}
+                        onChange={(e) => updateFormData('sector', e.target.value)}
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                        required
+                      >
+                        <option value="">{t('inscription.step3.sector.select')}</option>
+                        <option value="tech">{t('inscription.step3.sector.tech')}</option>
+                        <option value="agribusiness">{t('inscription.step3.sector.agri')}</option>
+                        <option value="sante">{t('inscription.step3.sector.health')}</option>
+                        <option value="education">{t('inscription.step3.sector.education')}</option>
+                        <option value="energie">{t('inscription.step3.sector.energy')}</option>
+                        <option value="autre">{t('inscription.step3.sector.other')}</option>
+                      </select>
+                    </div>
+                  </>
+                )}
+
                 {formData.profileType === 'investisseur' && (
                   <>
                     <div>
@@ -344,10 +492,10 @@ export default function InscriptionPage() {
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                       >
                         <option value="">{t('inscription.step3.sector.select')}</option>
-                        <option value="0-50k">0 - 50 000 €</option>
-                        <option value="50-200k">50 000 - 200 000 €</option>
-                        <option value="200k-1M">200 000 - 1M €</option>
-                        <option value="1M+">Plus de 1M €</option>
+                        <option value="0-50k">0 - 50 000 Fcfa</option>
+                        <option value="50-200k">50 000 - 200 000 Fcfa</option>
+                        <option value="200k-1M">200 000 - 1M Fcfa</option>
+                        <option value="1M+">Plus de 1M Fcfa</option>
                       </select>
                     </div>
 
@@ -375,7 +523,7 @@ export default function InscriptionPage() {
                 </Button>
                 <Button
                   onClick={() => setCurrentStep(4)}
-                  disabled={!canProceedStep3}
+                  disabled={!canProceedStep3()}
                   className="flex-1 bg-gradient-to-r from-emerald-600 to-blue-600"
                 >
                   {t('inscription.button.next')}
@@ -395,12 +543,40 @@ export default function InscriptionPage() {
                 <h2 className="text-2xl font-bold text-gray-900">{t('inscription.step4.title')}</h2>
               </div>
 
+              {submitMessage && (
+                <div className={`p-4 rounded-lg flex items-start gap-3 ${
+                  submitMessage === 'success' 
+                    ? 'bg-emerald-50 border border-emerald-200' 
+                    : 'bg-red-50 border border-red-200'
+                }`}>
+                  {submitMessage === 'success' ? (
+                    <>
+                      <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold text-emerald-900">Inscription reçue!</p>
+                        <p className="text-sm text-emerald-800">Vos clients email se sont ouverts. Envoyez les deux emails pour confirmer votre inscription. Nous traiterons vos données rapidement.</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold text-red-900">Erreur</p>
+                        <p className="text-sm text-red-800">Veuillez réessayer ou nous contacter directement à sanangdarel17@gmail.com.</p>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+
               <div className="bg-gray-50 p-6 rounded-lg space-y-4">
                 <div>
                   <p className="text-sm text-gray-600 mb-1">{t('inscription.step4.profile')}</p>
                   <p className="font-medium text-gray-900">
                     {formData.profileType === 'porteur'
                       ? t('inscription.step4.profile.porteur')
+                      : formData.profileType === 'entrepreneur'
+                      ? t('inscription.step4.profile.entrepreneur')
                       : t('inscription.step4.profile.investisseur')}
                   </p>
                 </div>
@@ -427,7 +603,7 @@ export default function InscriptionPage() {
                   </div>
                 </div>
 
-                {formData.profileType === 'porteur' && formData.projectName && (
+                {(formData.profileType === 'porteur' || formData.profileType === 'entrepreneur') && formData.projectName && (
                   <div>
                     <p className="text-sm text-gray-600 mb-1">{t('inscription.step4.project')}</p>
                     <p className="font-medium text-gray-900">{formData.projectName}</p>
@@ -449,6 +625,7 @@ export default function InscriptionPage() {
                 <Button
                   variant="outline"
                   onClick={() => setCurrentStep(3)}
+                  disabled={isSubmitting}
                   className="flex-1"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />
@@ -456,10 +633,20 @@ export default function InscriptionPage() {
                 </Button>
                 <Button
                   onClick={handleSubmit}
+                  disabled={isSubmitting}
                   className="flex-1 bg-gradient-to-r from-emerald-600 to-blue-600"
                 >
-                  {t('inscription.button.confirm')}
-                  <CheckCircle className="ml-2 h-4 w-4" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent mr-2"></div>
+                      {t('inscription.button.submitting')}
+                    </>
+                  ) : (
+                    <>
+                      {t('inscription.button.confirm')}
+                      <CheckCircle className="ml-2 h-4 w-4" />
+                    </>
+                  )}
                 </Button>
               </div>
             </div>

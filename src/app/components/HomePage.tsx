@@ -146,12 +146,20 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 flex-wrap"
           >
             <Link to="/inscription?type=porteur" className="w-full sm:w-auto">
               <Button size="lg" className="bg-white text-emerald-600 hover:bg-emerald-50 hover:scale-105 transition-all duration-300 shadow-2xl w-full sm:w-auto group">
                 <TrendingUp className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 {t('hero.cta.porteur')}
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+
+            <Link to="/inscription?type=entrepreneur" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-emerald-600 transition-all duration-300 w-full sm:w-auto group">
+                <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+                {t('hero.cta.entrepreneur')}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
