@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import PorteursPage from './components/PorteursPage';
+import EntrepreneursPage from './components/EntrepreneursPage';
 import InvestisseursPage from './components/InvestisseursPage';
 import ProgrammePage from './components/ProgrammePage';
 import InscriptionPage from './components/InscriptionPage';
@@ -20,6 +21,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/porteurs" element={<PorteursPage />} />
+              <Route path="/entrepreneurs" element={<EntrepreneursPage />} />
               <Route path="/investisseurs" element={<InvestisseursPage />} />
               <Route path="/programme" element={<ProgrammePage />} />
               <Route path="/inscription" element={<InscriptionPage />} />

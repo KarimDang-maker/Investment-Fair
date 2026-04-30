@@ -16,6 +16,7 @@ const translations: Translations = {
   // Navbar
   'nav.home': { fr: 'Accueil', en: 'Home' },
   'nav.porteurs': { fr: 'Porteurs', en: 'Project Owners' },
+  'nav.entrepreneurs': { fr: 'Entrepreneurs', en: 'Entrepreneurs' },
   'nav.investisseurs': { fr: 'Investisseurs', en: 'Investors' },
   'nav.programme': { fr: 'Programme', en: 'Schedule' },
   'nav.register': { fr: 'S\'inscrire', en: 'Register' },
@@ -40,6 +41,14 @@ const translations: Translations = {
     en: 'Bring your entrepreneurial ambitions to life and turn your vision into reality'
   },
   'hero.porteurs.badge': { fr: 'Pour les entrepreneurs ambitieux', en: 'For ambitious entrepreneurs' },
+
+  // Hero Entrepreneurs
+  'hero.entrepreneurs.title': { fr: 'Entrepreneurs & PME/TPE', en: 'Entrepreneurs & SMEs' },
+  'hero.entrepreneurs.subtitle': {
+    fr: 'Développez votre entreprise et connectez-vous avec les bons partenaires',
+    en: 'Grow your business and connect with the right partners'
+  },
+  'hero.entrepreneurs.badge': { fr: 'Pour les entreprises en croissance', en: 'For growing businesses' },
 
   // Hero Investisseurs
   'hero.investisseurs.title': { fr: 'Investisseurs', en: 'Investors' },
@@ -144,6 +153,75 @@ const translations: Translations = {
   'porteurs.cta.features': {
     fr: '✓ 100% gratuit · ✓ Confirmation instantanée · ✓ Ticket digital',
     en: '✓ 100% free · ✓ Instant confirmation · ✓ Digital ticket'
+  },
+
+  // Entrepreneurs Page - Additional content
+  'entrepreneurs.why.title': { fr: 'Pourquoi participer ?', en: 'Why participate?' },
+  'entrepreneurs.why.subtitle': {
+    fr: 'Accélérez la croissance de votre entreprise',
+    en: 'Accelerate your business growth'
+  },
+  'entrepreneurs.growth.title': { fr: 'Croissance accélérée', en: 'Accelerated growth' },
+  'entrepreneurs.growth.desc': {
+    fr: 'Rencontrez des investisseurs et partenaires stratégiques pour financer votre expansion',
+    en: 'Meet investors and strategic partners to fund your expansion'
+  },
+  'entrepreneurs.ecosystem.title': { fr: 'Écosystème entrepreneurial', en: 'Entrepreneurial ecosystem' },
+  'entrepreneurs.ecosystem.desc': {
+    fr: 'Connectez-vous avec d\'autres entrepreneurs et partez des expériences réussies',
+    en: 'Connect with other entrepreneurs and learn from successful experiences'
+  },
+  'entrepreneurs.solutions.title': { fr: 'Solutions adaptées', en: 'Tailored solutions' },
+  'entrepreneurs.solutions.desc': {
+    fr: 'Trouvez les services et expertises dont vous avez besoin pour votre PME/TPE',
+    en: 'Find the services and expertise you need for your SME'
+  },
+  'entrepreneurs.visibility.title': { fr: 'Visibilité accrue', en: 'Increased visibility' },
+  'entrepreneurs.visibility.desc': {
+    fr: 'Faites connaître votre entreprise à une audience qualifiée d\'acteurs économiques',
+    en: 'Showcase your company to a qualified audience of economic players'
+  },
+  'entrepreneurs.benefits.title': { fr: 'Ce que vous obtiendrez', en: 'What you will get' },
+  'entrepreneurs.benefits.subtitle': {
+    fr: 'Des outils et connexions pour propulser votre activité',
+    en: 'Tools and connections to boost your business'
+  },
+  'entrepreneurs.benefits.pitch': {
+    fr: 'Présentation de votre entreprise devant des investisseurs potentiels',
+    en: 'Present your company to potential investors'
+  },
+  'entrepreneurs.benefits.investors': {
+    fr: 'Accès direct à des sources de financement et d\'investissement',
+    en: 'Direct access to funding and investment sources'
+  },
+  'entrepreneurs.benefits.networking': {
+    fr: 'Rencontres B2B et partenariats commerciaux',
+    en: 'B2B meetings and business partnerships'
+  },
+  'entrepreneurs.benefits.expertise': {
+    fr: 'Conseils d\'experts et coaching entreprise',
+    en: 'Expert advice and business coaching'
+  },
+  'entrepreneurs.benefits.services': {
+    fr: 'Accès à des services spécialisés pour les PME/TPE',
+    en: 'Access to specialized services for SMEs'
+  },
+  'entrepreneurs.benefits.visibility': {
+    fr: 'Exposition auprès des décideurs économiques',
+    en: 'Exposure to economic decision-makers'
+  },
+  'entrepreneurs.cta.title': {
+    fr: 'Prêt à développer votre entreprise ?',
+    en: 'Ready to grow your business?'
+  },
+  'entrepreneurs.cta.subtitle': {
+    fr: 'Inscrivez-vous gratuitement et accélez votre croissance',
+    en: 'Register for free and accelerate your growth'
+  },
+  'entrepreneurs.cta.button': { fr: 'Je m\'inscris maintenant', en: 'I register now' },
+  'entrepreneurs.cta.features': {
+    fr: '✓ 100% gratuit · ✓ Confirmation instantanée · ✓ Email simple',
+    en: '✓ 100% free · ✓ Instant confirmation · ✓ Simple email'
   },
 
   // Investisseurs Page - Additional content

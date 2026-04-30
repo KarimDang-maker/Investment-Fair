@@ -17,6 +17,7 @@ export default function Navbar() {
   const navLinks = [
     { path: '/', label: t('nav.home') },
     { path: '/porteurs', label: t('nav.porteurs') },
+    { path: '/entrepreneurs', label: t('nav.entrepreneurs') },
     { path: '/investisseurs', label: t('nav.investisseurs') },
     { path: '/programme', label: t('nav.programme') },
   ];
