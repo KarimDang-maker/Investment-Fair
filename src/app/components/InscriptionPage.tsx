@@ -62,95 +62,71 @@ export default function InscriptionPage() {
 
   // envoi du mail par mailto
   const sendEngineerEmails = async (formData: FormData) => {
-    const adminEmail = 'contact@gieaorg.com';
-    
-    // contenu du mail pour l'admin
-    const adminSubject = 'Nouvelle inscription entrepreneur - Investment Fair';
-    const adminBody = `Nouvelle inscription entrepreneur reçue:
+  const adminEmail = 'sanangdarel17@gmail.com';
 
+  const subject = 'Nouvelle inscription - Investment Fair';
+
+  const body = `Bonjour,
+
+Une nouvelle inscription a été effectuée :
+
+--- INFORMATIONS UTILISATEUR ---
 Nom: ${formData.firstName} ${formData.lastName}
 Email: ${formData.email}
 Téléphone: ${formData.phone}
 Ville: ${formData.city}, ${formData.country}
-Nom du projet: ${formData.projectName}
-Secteur d'activité: ${formData.sector}
 
-Date d'inscription: ${new Date().toLocaleDateString('fr-FR')} à ${new Date().toLocaleTimeString('fr-FR')}`;
+Projet: ${formData.projectName}
+Secteur: ${formData.sector}
 
-    // format du mail de confirmation pour le client 
-    const userSubject = 'Confirmation d\'inscription - Investment Fair';
-    const userBody = `Bonjour ${formData.firstName},
+Date: ${new Date().toLocaleDateString('fr-FR')} à ${new Date().toLocaleTimeString('fr-FR')}
 
-Merci pour votre inscription au salon de l'investisseur !
-
-Nous avons bien reçu votre inscription avec les informations suivantes:
-- Nom: ${formData.firstName} ${formData.lastName}
-- Projet: ${formData.projectName}
-- Secteur: ${formData.sector}
-- Email: ${formData.email}
-
-Nous traitons vos données et nous vous recontacterons bientôt avec plus d'informations sur l'événement.
+--- MESSAGE AUTOMATIQUE ---
+Merci pour votre inscription au salon de l'investisseur.
+Nous avons bien reçu vos informations et nous vous recontacterons bientôt.
 
 Cordialement,
-L'équipe du salon de l'investisseur`;
+L'équipe du salon de l'investisseur
+`;
+
+  try {
+    window.open(
+      `mailto:${adminEmail}?cc=${formData.email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+      '_blank'
+    );
+
+    return true;
+  } catch (error) {
+    console.error('Error opening email client:', error);
+    return false;
+  }
+};
+
+ const handleSubmit = async () => {
+  if (
+    formData.profileType === 'entrepreneur' ||
+    formData.profileType === 'porteur' ||
+    formData.profileType === 'investisseur'
+  ) {
+    setIsSubmitting(true);
 
     try {
-      // ouverture admin inbox
-      setTimeout(() => {
-        window.open(
-          `mailto:${adminEmail}?subject=${encodeURIComponent(adminSubject)}&body=${encodeURIComponent(adminBody)}`,
-          '_blank'
-        );
-      }, 100);
+      const emailsSent = await sendEngineerEmails(formData);
 
-      // ouverture client inbox
-      setTimeout(() => {
-        window.open(
-          `mailto:${formData.email}?subject=${encodeURIComponent(userSubject)}&body=${encodeURIComponent(userBody)}`,
-          '_blank'
-        );
-      }, 500);
-
-      return true;
-    } catch (error) {
-      console.error('Error opening email client:', error);
-      return false;
-    }
-  };
-
-  const handleSubmit = async () => {
-    if (formData.profileType === 'entrepreneur') {
-      
-      setIsSubmitting(true);
-      
-      try {
-        const emailsSent = await sendEngineerEmails(formData);
-        
-        if (emailsSent) {
-          setSubmitMessage('success');
-          setTimeout(() => navigate('/'), 2000);
-        } else {
-          setSubmitMessage('error');
-        }
-      } catch (error) {
-        console.error('Error:', error);
+      if (emailsSent) {
+        setSubmitMessage('success');
+        setTimeout(() => navigate('/'), 2000);
+      } else {
         setSubmitMessage('error');
-      } finally {
-        setIsSubmitting(false);
       }
-    } else {
-     
-      const ticketId = `SIP${Date.now()}${Math.floor(Math.random() * 1000)}`;
-      const ticketData = {
-        ...formData,
-        ticketId,
-        timestamp: new Date().toISOString()
-      };
-
-      localStorage.setItem(`ticket_${ticketId}`, JSON.stringify(ticketData));
-      navigate(`/ticket/${ticketId}`);
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitMessage('error');
+    } finally {
+      setIsSubmitting(false);
     }
-  };
+  }
+};
 
   const canProceedStep2 = formData.firstName && formData.lastName && formData.email && formData.phone;
   const canProceedStep3 = () => {
@@ -562,7 +538,7 @@ L'équipe du salon de l'investisseur`;
                       <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-red-900">Erreur</p>
-                        <p className="text-sm text-red-800">Veuillez réessayer ou nous contacter directement à sanangdarel17@gmail.com.</p>
+                        <p className="text-sm text-red-800">Veuillez réessayer ou nous contacter directement à contact@gieaorg.com.</p>
                       </div>
                     </>
                   )}
