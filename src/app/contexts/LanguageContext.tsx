@@ -463,8 +463,8 @@ const translations: Translations = {
   'inscription.button.next': { fr: 'Suivant', en: 'Next' },
   'inscription.button.submitting': { fr: 'Inscription en cours...', en: 'Registering...' },
   'inscription.button.confirm': {
-    fr: 'Confirmer et générer mon ticket',
-    en: 'Confirm and generate my ticket'
+    fr: 'Confirmer ',
+    en: 'Confirm '
   },
 
   // Video Section
