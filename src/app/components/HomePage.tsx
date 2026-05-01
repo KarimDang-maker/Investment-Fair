@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TrendingUp, Users, Handshake, Calendar, MapPin, ArrowRight, Sparkles, Target, Zap, CheckCircle } from 'lucide-react';
+import { TrendingUp, Users, Handshake, Calendar, MapPin, ArrowRight, Sparkles, Target, Zap, CheckCircle, Briefcase } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import VideoSection from './VideoSection';
@@ -377,7 +377,7 @@ export default function HomePage() {
           </div>
 
           <p className="text-sm text-emerald-100">
-            ✓ {t('cta.free')} · ✓ {t('cta.instant')} · ✓ {t('cta.ticket')}
+            ✓ {t('cta.free')} · ✓ {t('cta.instant')} 
           </p>
         </motion.div>
       </SectionContainer>
@@ -390,10 +390,11 @@ export default function HomePage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {[
               { to: '/porteurs', labelKey: 'quicklinks.porteurs', icon: TrendingUp, color: 'emerald' },
               { to: '/investisseurs', labelKey: 'quicklinks.investisseurs', icon: Target, color: 'blue' },
+              { to: '/entrepreneurs', labelKey: 'Pme', icon: Briefcase, color: 'blue' },
               { to: '/programme', labelKey: 'quicklinks.programme', icon: Calendar, color: 'emerald' },
               { to: '/inscription', labelKey: 'quicklinks.inscription', icon: Sparkles, color: 'blue' },
             ].map((link, index) => {

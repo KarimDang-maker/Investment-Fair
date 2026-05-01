@@ -30,7 +30,7 @@ const translations: Translations = {
   'hero.cta.porteur': { fr: 'Je suis porteur de projet', en: 'I\'m a project owner' },
   'hero.cta.entrepreneur': { fr: 'Je suis entrepreneur / TPE / PME', en: 'I\'m an entrepreneur / SME' },
   'hero.cta.investisseur': { fr: 'Je suis investisseur', en: 'I\'m an investor' },
-  'hero.date': { fr: 'Avril 2026', en: 'April, 2026' },
+  'hero.date': { fr: 'Août 2026', en: 'August, 2026' },
   'hero.location': { fr: 'Yaoundé, Cameroun', en: 'Yaoundé, Cameroon' },
   'hero.free': { fr: 'Inscription gratuite', en: 'Free registration' },
 
@@ -151,8 +151,8 @@ const translations: Translations = {
   },
   'porteurs.cta.button': { fr: 'Je m\'inscris maintenant', en: 'I register now' },
   'porteurs.cta.features': {
-    fr: '✓ 100% gratuit · ✓ Confirmation instantanée · ✓ Ticket digital',
-    en: '✓ 100% free · ✓ Instant confirmation · ✓ Digital ticket'
+    fr: '✓ 100% gratuit · ✓ Confirmation instantanée ',
+    en: '✓ 100% free · ✓ Instant confirmation '
   },
 
   // PME/Entrepreneurs Page - Additional content
@@ -502,7 +502,7 @@ const translations: Translations = {
   },
   'footer.contact': { fr: 'Contact', en: 'Contact' },
   'footer.event': { fr: 'Événement', en: 'Event' },
-  'footer.date': { fr: 'Date: Avril 2026', en: 'Date: April, 2026' },
+  'footer.date': { fr: 'Date: Août 2026', en: 'Date: August, 2026' },
   'footer.location': { fr: 'Lieu: Yaoundé, Cameroun', en: 'Location: Yaoundé, Cameroon' },
   'footer.free': { fr: 'Inscription: Gratuite', en: 'Registration: Free' },
   'footer.rights': { fr: 'Tous droits réservés', en: 'All rights reserved' },

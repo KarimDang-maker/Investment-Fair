@@ -62,7 +62,7 @@ export default function InscriptionPage() {
 
   // envoi du mail par mailto
   const sendEngineerEmails = async (formData: FormData) => {
-  const adminEmail = 'contact@gieaorg.com';
+  const adminEmail = 'sanangdarel17@gmail.com';
 
   const subject = 'Nouvelle inscription - Investment Fair';
 
@@ -70,7 +70,7 @@ export default function InscriptionPage() {
 
 Une nouvelle inscription a été effectuée :
 
---- INFORMATIONS UTILISATEUR ---
+INFORMATIONS UTILISATEUR CLIENT
 Nom: ${formData.firstName} ${formData.lastName}
 Email: ${formData.email}
 Téléphone: ${formData.phone}
@@ -81,7 +81,6 @@ Secteur: ${formData.sector}
 
 Date: ${new Date().toLocaleDateString('fr-FR')} à ${new Date().toLocaleTimeString('fr-FR')}
 
---- MESSAGE AUTOMATIQUE ---
 Merci pour votre inscription au salon de l'investisseur.
 Nous avons bien reçu vos informations et nous vous recontacterons bientôt.
 
