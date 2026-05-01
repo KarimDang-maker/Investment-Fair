@@ -62,7 +62,7 @@ export default function InscriptionPage() {
 
   // envoi du mail par mailto
   const sendEngineerEmails = async (formData: FormData) => {
-  const adminEmail = 'sanangdarel17@gmail.com';
+  const adminEmail = 'contact@gieaorg.com';
 
   const subject = 'Nouvelle inscription - Investment Fair';
 

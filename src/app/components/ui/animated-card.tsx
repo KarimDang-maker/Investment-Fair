@@ -5,7 +5,7 @@ interface AnimatedCardProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  variant?: 'default' | 'emerald' | 'blue' | 'premium';
+  variant?: 'default' | 'emerald' | 'blue' | 'orange' | 'amber' | 'premium';
 }
 
 export function AnimatedCard({
@@ -18,6 +18,8 @@ export function AnimatedCard({
     default: 'bg-white hover:shadow-xl border border-gray-100',
     emerald: 'bg-gradient-to-br from-emerald-50 to-white hover:shadow-emerald-100 border border-emerald-100',
     blue: 'bg-gradient-to-br from-blue-50 to-white hover:shadow-blue-100 border border-blue-100',
+    orange: 'bg-gradient-to-br from-orange-50 to-white hover:shadow-orange-100 border border-orange-100',
+    amber: 'bg-gradient-to-br from-amber-50 to-white hover:shadow-amber-100 border border-amber-100',
     premium: 'bg-white hover:shadow-2xl border-2 border-transparent hover:border-emerald-200',
   };
 

@@ -16,7 +16,7 @@ const translations: Translations = {
   // Navbar
   'nav.home': { fr: 'Accueil', en: 'Home' },
   'nav.porteurs': { fr: 'Porteurs', en: 'Project Owners' },
-  'nav.entrepreneurs': { fr: 'Entrepreneurs', en: 'Entrepreneurs' },
+  'nav.pme': { fr: 'PME', en: 'SMEs' },
   'nav.investisseurs': { fr: 'Investisseurs', en: 'Investors' },
   'nav.programme': { fr: 'Programme', en: 'Schedule' },
   'nav.register': { fr: 'S\'inscrire', en: 'Register' },
@@ -155,73 +155,73 @@ const translations: Translations = {
     en: '✓ 100% free · ✓ Instant confirmation · ✓ Digital ticket'
   },
 
-  // Entrepreneurs Page - Additional content
-  'entrepreneurs.why.title': { fr: 'Pourquoi participer ?', en: 'Why participate?' },
+  // PME/Entrepreneurs Page - Additional content
+  'entrepreneurs.why.title': { fr: 'Transformer votre PME/TPE', en: 'Transform your SME' },
   'entrepreneurs.why.subtitle': {
-    fr: 'Accélérez la croissance de votre entreprise',
-    en: 'Accelerate your business growth'
+    fr: 'Accédez aux ressources et partenaires pour scaler votre business',
+    en: 'Access resources and partners to scale your business'
   },
-  'entrepreneurs.growth.title': { fr: 'Croissance accélérée', en: 'Accelerated growth' },
+  'entrepreneurs.growth.title': { fr: 'Financement garanti', en: 'Guaranteed funding' },
   'entrepreneurs.growth.desc': {
-    fr: 'Rencontrez des investisseurs et partenaires stratégiques pour financer votre expansion',
-    en: 'Meet investors and strategic partners to fund your expansion'
+    fr: 'Levez des fonds auprès de vrais investisseurs pour accélérer votre croissance exponentiellement',
+    en: 'Raise funds from real investors to exponentially accelerate your growth'
   },
-  'entrepreneurs.ecosystem.title': { fr: 'Écosystème entrepreneurial', en: 'Entrepreneurial ecosystem' },
+  'entrepreneurs.ecosystem.title': { fr: 'Écosystème de croissance', en: 'Growth ecosystem' },
   'entrepreneurs.ecosystem.desc': {
-    fr: 'Connectez-vous avec d\'autres entrepreneurs et partez des expériences réussies',
-    en: 'Connect with other entrepreneurs and learn from successful experiences'
+    fr: 'Entrez dans un réseau d\'entrepreneurs établis et accédez à des opportunités exclusives',
+    en: 'Join an established network of entrepreneurs and access exclusive opportunities'
   },
-  'entrepreneurs.solutions.title': { fr: 'Solutions adaptées', en: 'Tailored solutions' },
+  'entrepreneurs.solutions.title': { fr: 'Outils & Services', en: 'Tools & Services' },
   'entrepreneurs.solutions.desc': {
-    fr: 'Trouvez les services et expertises dont vous avez besoin pour votre PME/TPE',
-    en: 'Find the services and expertise you need for your SME'
+    fr: 'Bénéficiez d\'outils, formations et services premium spécialisés pour les PME/TPE en expansion',
+    en: 'Benefit from premium tools, training and specialized services for growing SMEs'
   },
-  'entrepreneurs.visibility.title': { fr: 'Visibilité accrue', en: 'Increased visibility' },
+  'entrepreneurs.visibility.title': { fr: 'Exposition B2B maximale', en: 'Maximum B2B exposure' },
   'entrepreneurs.visibility.desc': {
-    fr: 'Faites connaître votre entreprise à une audience qualifiée d\'acteurs économiques',
-    en: 'Showcase your company to a qualified audience of economic players'
+    fr: 'Positionner votre entreprise face aux décideurs, prescripteurs et acheteurs stratégiques',
+    en: 'Position your company in front of decision-makers, influencers and strategic buyers'
   },
-  'entrepreneurs.benefits.title': { fr: 'Ce que vous obtiendrez', en: 'What you will get' },
+  'entrepreneurs.benefits.title': { fr: 'Vos avantages', en: 'Your benefits' },
   'entrepreneurs.benefits.subtitle': {
-    fr: 'Des outils et connexions pour propulser votre activité',
-    en: 'Tools and connections to boost your business'
+    fr: 'Tout ce dont vous avez besoin pour passer au niveau supérieur',
+    en: 'Everything you need to level up your business'
   },
   'entrepreneurs.benefits.pitch': {
-    fr: 'Présentation de votre entreprise devant des investisseurs potentiels',
-    en: 'Present your company to potential investors'
+    fr: 'Pitchez votre expansion devant plus de 100 investisseurs actifs',
+    en: 'Pitch your expansion to 100+ active investors'
   },
   'entrepreneurs.benefits.investors': {
-    fr: 'Accès direct à des sources de financement et d\'investissement',
-    en: 'Direct access to funding and investment sources'
+    fr: 'Accès à des sources de financement pré-qualifiées',
+    en: 'Access to pre-qualified funding sources'
   },
   'entrepreneurs.benefits.networking': {
-    fr: 'Rencontres B2B et partenariats commerciaux',
-    en: 'B2B meetings and business partnerships'
+    fr: 'Partnerships B2B stratégiques et intégrations commerciales',
+    en: 'Strategic B2B partnerships and business integrations'
   },
   'entrepreneurs.benefits.expertise': {
-    fr: 'Conseils d\'experts et coaching entreprise',
-    en: 'Expert advice and business coaching'
+    fr: 'Mentorat d\'experts en croissance et scaling d\'entreprise',
+    en: 'Mentorship from growth and scaling experts'
   },
   'entrepreneurs.benefits.services': {
-    fr: 'Accès à des services spécialisés pour les PME/TPE',
-    en: 'Access to specialized services for SMEs'
+    fr: 'Accès à l\'écosystème de services premium',
+    en: 'Access to premium services ecosystem'
   },
   'entrepreneurs.benefits.visibility': {
-    fr: 'Exposition auprès des décideurs économiques',
-    en: 'Exposure to economic decision-makers'
+    fr: 'Visibilité auprès des B2B players et décideurs clés',
+    en: 'Visibility to key B2B players and decision-makers'
   },
   'entrepreneurs.cta.title': {
-    fr: 'Prêt à développer votre entreprise ?',
-    en: 'Ready to grow your business?'
+    fr: 'Êtes-vous prêt à scaler ?',
+    en: 'Ready to scale your business?'
   },
   'entrepreneurs.cta.subtitle': {
-    fr: 'Inscrivez-vous gratuitement et accélez votre croissance',
-    en: 'Register for free and accelerate your growth'
+    fr: 'Rejoignez les PME/TPE qui transforment l\'Afrique',
+    en: 'Join SMEs transforming Africa'
   },
-  'entrepreneurs.cta.button': { fr: 'Je m\'inscris maintenant', en: 'I register now' },
+  'entrepreneurs.cta.button': { fr: 'Inscrivez-vous gratuitement', en: 'Register for free' },
   'entrepreneurs.cta.features': {
-    fr: '✓ 100% gratuit · ✓ Confirmation instantanée · ✓ Email simple',
-    en: '✓ 100% free · ✓ Instant confirmation · ✓ Simple email'
+    fr: '✓ 100% gratuit · ✓ Accès immédiat · ✓ Sans engagement',
+    en: '✓ 100% free · ✓ Instant access · ✓ No commitment'
   },
 
   // Investisseurs Page - Additional content

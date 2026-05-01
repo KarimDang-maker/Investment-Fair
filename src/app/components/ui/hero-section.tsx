@@ -57,8 +57,14 @@ export function HeroSection({
 
       {/* Gradient Overlay */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br from-${gradientFrom} via-${gradientFrom.replace('-600', '-700')} to-${gradientTo}`}
-        style={{ opacity: overlayOpacity / 100 }}
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(to bottom right, rgb(var(--color-from)), rgb(var(--color-to)))`,
+          opacity: overlayOpacity / 100,
+          // Gradient colors mapping
+          '--color-from': gradientFrom === 'orange-600' ? '249, 115, 22' : gradientFrom === 'emerald-600' ? '5, 150, 105' : gradientFrom === 'blue-600' ? '37, 99, 235' : '5, 150, 105',
+          '--color-to': gradientTo === 'orange-800' ? '146, 64, 14' : gradientTo === 'emerald-800' ? '4, 120, 87' : gradientTo === 'blue-800' ? '30, 58, 138' : '4, 120, 87',
+        } as React.CSSProperties}
       ></div>
 
       {/* Pattern Overlay (optionnel - décoratif) */}
@@ -110,6 +116,20 @@ export function HeroPorteurs({ children }: { children: ReactNode }) {
       gradientFrom="emerald-600"
       gradientTo="emerald-800"
       overlayOpacity={85}
+    >
+      {children}
+    </HeroSection>
+  );
+}
+
+// Hero pour la page Entrepreneurs/PME
+export function HeroEntrepreneurs({ children }: { children: ReactNode }) {
+  return (
+    <HeroSection
+      backgroundImage="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80&fit=crop" // Photo TPE/PME - small business workspace
+      gradientFrom="blue-600"
+      gradientTo="blue-800"
+      overlayOpacity={90}
     >
       {children}
     </HeroSection>

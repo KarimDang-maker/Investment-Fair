@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 interface IconBadgeProps {
   icon: ReactNode;
   className?: string;
-  variant?: 'emerald' | 'blue' | 'gradient';
+  variant?: 'emerald' | 'blue' | 'orange' | 'amber' | 'gradient';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   animate?: boolean;
 }
@@ -19,6 +19,8 @@ export function IconBadge({
   const variants = {
     emerald: 'bg-gradient-to-br from-emerald-500 to-emerald-600 shadow-emerald-200',
     blue: 'bg-gradient-to-br from-blue-500 to-blue-600 shadow-blue-200',
+    orange: 'bg-gradient-to-br from-orange-500 to-orange-600 shadow-orange-200',
+    amber: 'bg-gradient-to-br from-amber-500 to-amber-600 shadow-amber-200',
     gradient: 'bg-gradient-to-br from-emerald-500 via-blue-500 to-emerald-600 shadow-emerald-300',
   };
 
